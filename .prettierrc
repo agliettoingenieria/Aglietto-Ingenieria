@@ -1,0 +1,7 @@
+{
+	"trailingComma": "es5",
+	"htmlWhitespaceSensitivity": "css",
+	"semi": true,
+	"singleQuote": true,
+	"endOfLine": "lf"
+}

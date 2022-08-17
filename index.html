@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Document</title>
+
+	<style>
+		:root {
+			--bg-dark: #232323;
+			--bg-light: #f7f7f7bd;
+			--fg-dark: #ffffff;
+			--fg-light: #000000;
+			--nav-bar-h: 80px;
+			--icon-dimension: 30px;
+			--logo-dimension: calc(var(--nav-bar-h) - 5px);
+			--fs-title: 2.5rem;
+			--fs-title: 2.5rem;
+			--fs-subtitle: 1.5rem;
+			--fs-text: 1.1rem;
+		}
+	</style>
+
+	<style>
+		html,
+		body,
+		*,
+		*::after,
+		*::before {
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			overflow: hidden;
+			font-size: var(--fs-text);
+			transition: background-color 0s;
+			background-color: var(--bg-dark);
+			color: var(--fg-dark);
+		}
+
+		body.light {
+			background-color: var(--bg-light);
+			color: var(--fg-light);
+		}
+
+		main {
+			position: relative;
+			overflow-y: auto;
+			scroll-behavior: smooth;
+			scroll-snap-align: end;
+			scroll-snap-type: y;
+		}
+
+		section {
+			margin: auto;
+			position: relative;
+			top: 100%;
+			border: 2px solid red;
+			height: 200px;
+			width: 200px;
+			margin-top: 1.5rem;
+		}
+
+		ul,
+		ol {
+			list-style: none;
+		}
+
+		li {
+			display: inline-block;
+		}
+
+		a,
+		abbr,
+		a {
+
+			text-decoration: none;
+		}
+
+		a,
+		a:visited {
+			display: inline-block;
+			color: inherit;
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+	</style>
+	<style>
+		.flex {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.link:not(.logo, .icon) {
+			position: relative;
+			top: -.2rem;
+			padding: .2rem 4vw;
+			border-radius: .375rem;
+		}
+
+		.link.current {
+			background-color: red;
+		}
+	</style>
+
+	<link rel="stylesheet" href="/styles/nav.css">
+</head>
+
+<body>
+	<nav id="nav">
+		<ul class="nav__list">
+			<li class="logo"><a href="#">a</a></li>
+			<li class="nav__item item">
+				<ol id="sections__list" class="flex">
+					<li><a class="link" href="#c">b_a</a></li>
+					<li><a class="link" href="#">b_b</a></li>
+					<li><a class="link" href="#">b_c</a></li>
+				</ol>
+			</li>
+			<li><a href="#">c</a></li>
+		</ul>
+	</nav>
+
+	<main>
+		<section id="c">
+			<article>
+				<header>Qué es
+					<strong><dfn><abbr title="[CEOP Complete abrebiature]">CEOP</abbr></dfn></strong>
+				</header>
+				<div>
+					<p>Texto</p>
+				</div>
+			</article>
+		</section>
+	</main>
+
+	<span id="socials">
+		<ul class="list">
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</span>
+	<script>
+		((w) => {
+			const themeConfig = JSON.parse(window.localStorage.getItem("config") || '{}')
+			if (!themeConfig.mode) {
+				const InitialThemeMode = "dark"
+				themeConfig.mode = InitialThemeMode
+				window.localStorage.setItem("config", JSON.stringify(themeConfig))
+			}
+			document.body.classList.add(themeConfig.mode)
+
+		})(typeof global !== "undefined" ? global : this)
+	</script>
+
+</body>
+
+</html>

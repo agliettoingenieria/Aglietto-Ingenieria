@@ -1,0 +1,28 @@
+#nav {
+	height: var(--nav-bar-h);
+	padding-top: calc(var(--nav-bar-h) / 4);
+}
+
+.nav__list {
+	display: grid;
+	grid-template-columns: var(--nav-bar-h) 1fr var(--nav-bar-h);
+	padding-inline: 1.5rem;
+}
+
+.logo {
+	width: var(--logo-dimension);
+	height: var(--logo-dimension);
+	border-radius: 50%;
+	border: 1px solid red;
+	overflow: hidden;
+	background: url("https://secure.gravatar.com/avatar/8081b26e05bb4354f7d65ffc34cbbd67?s=80&d=retro&r=pg") no-repeat;
+}
+
+.nav__list .item {
+	width: 100%;
+}
+
+#sections__list {
+	justify-content: center;
+	gap: 20vmin;
+}

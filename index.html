@@ -5,22 +5,23 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 	<title>Document</title>
 
 	<style>
 		:root {
-			--bg-dark: #232323;
-			--bg-light: #f7f7f7bd;
+			--hue: 255;
+			--saturation: 25%;
+			--lightness: 12%;
+			--alpha: 1;
 			--fg-dark: #ffffff;
 			--fg-light: #000000;
-			--nav-bar-h: 80px;
 			--icon-dimension: 30px;
-			--logo-dimension: calc(var(--nav-bar-h) - 5px);
-			--fs-title: 2.5rem;
+			--logo-dimension: 80px;
 			--fs-title: 2.5rem;
 			--fs-subtitle: 1.5rem;
-			--fs-text: 1.1rem;
+			--fs-text: 1.3rem;
+			--pbl: 1rem;
+			--pln: 1rem;
 		}
 	</style>
 
@@ -36,34 +37,46 @@
 		}
 
 		body {
-			overflow: hidden;
 			font-size: var(--fs-text);
 			transition: background-color 0s;
-			background-color: var(--bg-dark);
 			color: var(--fg-dark);
+			overflow-x: hidden;
+		}
+
+		body.dark {
+			background: hsla(var(--hue) var(--saturation) var(--lightness) / var(--alpha));
 		}
 
 		body.light {
-			background-color: var(--bg-light);
 			color: var(--fg-light);
 		}
 
 		main {
 			position: relative;
-			overflow-y: auto;
 			scroll-behavior: smooth;
+			padding-top: var(--pbl, 1rem);
+			padding-inline: var(--pln, 1rem);
 			scroll-snap-align: end;
 			scroll-snap-type: y;
+			margin-top: 112px;
 		}
 
-		section {
-			margin: auto;
+		article {
+			--lightness: 15%;
+			background: hsla(var(--hue) var(--saturation) var(--lightness) / var(--alpha));
 			position: relative;
-			top: 100%;
-			border: 2px solid red;
-			height: 200px;
-			width: 200px;
-			margin-top: 1.5rem;
+			height: 100vh;
+			padding-top: 2rem;
+			padding-inline: var(--pln);
+			border-radius: .375rem;
+			margin-bottom: var(--pbl);
+		}
+
+		button {
+			background: none;
+			border: none;
+			outline: none;
+			cursor: pointer;
 		}
 
 		ul,
@@ -72,7 +85,15 @@
 		}
 
 		li {
-			display: inline-block;
+			text-align: center;
+		}
+
+		h1 {
+			font-size: var(--fs-title);
+		}
+
+		h3 {
+			font-size: var(--fs-subtitle);
 		}
 
 		a,
@@ -95,30 +116,58 @@
 		}
 	</style>
 	<style>
-		.flex {
-			display: flex;
-			justify-content: space-between;
+		.contrast {
+			--saturation: 35%;
 		}
 
-		.link:not(.logo, .icon) {
-			position: relative;
-			top: -.2rem;
-			padding: .2rem 4vw;
-			border-radius: .375rem;
+		.bg {
+			background: hsla(var(--hue) var(--saturation) var(--lightness) / var(--alpha));
 		}
+
+		.flex {
+			display: flex;
+			justify-content: center;
+		}
+
 
 		.link.current {
 			background-color: red;
 		}
+
+		.abbr {
+			--lightness: 60%;
+			position: relative;
+			padding-inline: .5rem;
+			border-radius: .375rem;
+			transition: background .15s;
+		}
+
+		.abbr:hover {
+			--lightness: 40%
+		}
+
+		.abbr::after {
+			position: absolute;
+			content: "?";
+			font-size: 1.3rem;
+			top: -3%;
+			right: -10%;
+		}
+
+		.icon {
+			width: 60px;
+			height: 60px;
+		}
 	</style>
 
 	<link rel="stylesheet" href="/styles/nav.css">
+	<link rel="stylesheet" href="/styles/article.css">
 </head>
 
 <body>
-	<nav id="nav">
+	<nav id="nav" class="contrast bg">
 		<ul class="nav__list">
-			<li class="logo"><a href="#">a</a></li>
+			<li class="logo nav__item item"><a href="#">a</a></li>
 			<li class="nav__item item">
 				<ol id="sections__list" class="flex">
 					<li><a class="link" href="#c">b_a</a></li>
@@ -126,21 +175,120 @@
 					<li><a class="link" href="#">b_c</a></li>
 				</ol>
 			</li>
-			<li><a href="#">c</a></li>
+			<li><button class="icon">
+					<svg viewBox="0 0 24 24" focusable="false" role="presentation" class="css-ivr09j">
+						<g stroke-linejoin="full" stroke-linecap="full" stroke-width="2" fill="none" stroke="currentColor">
+							<circle cx="12" cy="12" r="5"></circle>
+							<path d="M12 1v2"></path>
+							<path d="M12 21v2"></path>
+							<path d="M4.22 4.22l1.42 1.42"></path>
+							<path d="M18.36 18.36l1.42 1.42"></path>
+							<path d="M1 12h2"></path>
+							<path d="M21 12h2"></path>
+							<path d="M4.22 19.78l1.42-1.42"></path>
+							<path d="M18.36 5.64l1.42-1.42"></path>
+						</g>
+					</svg>
+				</button></li>
 		</ul>
 	</nav>
 
 	<main>
-		<section id="c">
-			<article>
-				<header>Qué es
-					<strong><dfn><abbr title="[CEOP Complete abrebiature]">CEOP</abbr></dfn></strong>
-				</header>
-				<div>
+		<article>
+			<header class="title">
+				<h1>
+					<a href="#" class="abbr bg">
+						<strong>
+							<dfn>
+								<abbr title="[CEOP Complete abrebiature]">
+									CEOP
+								</abbr>
+							</dfn>
+						</strong>
+					</a>
+				</h1>
+			</header>
+			<section class="article_section">
+				<div class="section_title">
+					<h2>¿Que és?</h2>
+				</div>
+				<div class="section_text">
 					<p>Texto</p>
 				</div>
-			</article>
-		</section>
+			</section>
+			<section class="article_section">
+				<div class="section_title">
+					<h2>¿Que és?</h2>
+				</div>
+				<div class="section_text">
+					<p>Texto</p>
+				</div>
+			</section>
+			<section class="article_section">
+				<div class="section_title">
+					<h2>¿Que és?</h2>
+				</div>
+				<div class="section_text">
+					<p>Texto</p>
+				</div>
+			</section>
+			<section class="article_section">
+				<div class="section_title">
+					<h2>¿Que és?</h2>
+				</div>
+				<div class="section_text">
+					<p>Texto</p>
+				</div>
+			</section>
+		</article>
+
+		<article>
+			<header class="title">
+				<h1>
+					<a href="#" class="abbr bg">
+						<strong>
+							<dfn>
+								<abbr title="[CEOP Complete abrebiature]">
+									CEOP
+								</abbr>
+							</dfn>
+						</strong>
+					</a>
+				</h1>
+			</header>
+			<section class="article_section">
+				<div class="section_title">
+					<h2>¿Que és?</h2>
+				</div>
+				<div class="section_text">
+					<p>Texto</p>
+				</div>
+			</section>
+			<section class="article_section">
+				<div class="section_title">
+					<h2>¿Que és?</h2>
+				</div>
+				<div class="section_text">
+					<p>Texto</p>
+				</div>
+			</section>
+			<section class="article_section">
+				<div class="section_title">
+					<h2>¿Que és?</h2>
+				</div>
+				<div class="section_text">
+					<p>Texto</p>
+				</div>
+			</section>
+			<section class="article_section">
+				<div class="section_title">
+					<h2>¿Que és?</h2>
+				</div>
+				<div class="section_text">
+					<p>Texto</p>
+				</div>
+			</section>
+		</article>
 	</main>
 
 	<span id="socials">

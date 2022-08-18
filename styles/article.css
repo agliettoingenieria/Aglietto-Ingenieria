@@ -1,0 +1,37 @@
+.article_section {
+	margin-block: 2rem;
+}
+
+.section_title, .section_text {
+	position: relative;
+}
+
+.section_title > h2, .section_text > p {
+	margin-left: 1rem;
+} 
+
+.section_title::before, .section_text::before {
+	position: absolute;
+	content: '';
+	left: 0;
+	background: hsla(255 25% 62% / .8);
+}
+
+
+.section_title {
+	margin-bottom: 1rem;
+}
+
+.section_title::before {
+	top: 50%;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+}
+
+.section_text::before {
+	top: -2px;
+	width: 5px;
+	height: 100%;
+	border-radius: .375rem;
+}

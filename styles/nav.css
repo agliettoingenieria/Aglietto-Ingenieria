@@ -1,13 +1,18 @@
 #nav {
-	height: var(--nav-bar-h);
-	padding-top: calc(var(--nav-bar-h) / 4);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding-block: 1rem;
+	z-index: 1;
 }
 
 .nav__list {
 	display: grid;
-	grid-template-columns: var(--nav-bar-h) 1fr var(--nav-bar-h);
-	padding-inline: 1.5rem;
+	grid-template-columns: .5fr 1fr .5fr;
+	align-items: center;
 }
+
 
 .logo {
 	width: var(--logo-dimension);
@@ -16,13 +21,36 @@
 	border: 1px solid red;
 	overflow: hidden;
 	background: url("https://secure.gravatar.com/avatar/8081b26e05bb4354f7d65ffc34cbbd67?s=80&d=retro&r=pg") no-repeat;
-}
-
-.nav__list .item {
-	width: 100%;
+	justify-self: center;
 }
 
 #sections__list {
-	justify-content: center;
-	gap: 20vmin;
+	justify-content: space-between;
+	align-items: center;
+	gap: 10vmin;
+}
+
+.link:not(.logo, .icon) {
+	position: relative;
+	top: -.2rem;
+	padding: .2rem 4vw;
+	border-radius: .375rem;
+}
+
+.link:hover, .icon:hover {
+		--lightness: 70%;
+		background: hsla(var(--hue) var(--saturation) var(--lightness) / var(--alpha));
+}
+.icon {
+	z-index: 2;
+	padding: .5rem;
+	border-radius: .375rem;
+}
+
+.light .icon {
+	color: #eefc2fde;
+}
+
+.dark .icon {
+	color: #401575e3;
 }

@@ -38,16 +38,16 @@
 
 		body {
 			font-size: var(--fs-text);
-			transition: background-color 0s;
+			transition: background-color .1s;
 			color: var(--fg-dark);
 			overflow-x: hidden;
-		}
-
-		body.dark {
 			background: hsla(var(--hue) var(--saturation) var(--lightness) / var(--alpha));
 		}
 
 		body.light {
+			--hue: 235;
+			--saturation: 73%;
+			--lightness: 87%;
 			color: var(--fg-light);
 		}
 
@@ -63,7 +63,6 @@
 
 		article {
 			--lightness: 15%;
-			background: hsla(var(--hue) var(--saturation) var(--lightness) / var(--alpha));
 			position: relative;
 			height: 100vh;
 			padding-top: 2rem;
@@ -77,6 +76,7 @@
 			border: none;
 			outline: none;
 			cursor: pointer;
+			width: fit-content;
 		}
 
 		ul,
@@ -109,6 +109,10 @@
 			color: inherit;
 		}
 
+		a {
+			--lightness: 45%
+		}
+
 		img {
 			width: 100%;
 			height: 100%;
@@ -117,7 +121,15 @@
 	</style>
 	<style>
 		.contrast {
-			--saturation: 35%;
+			--saturation: 45%;
+		}
+
+		.light nav.contrast {
+			--lightness: 70%;
+		}
+
+		.light .contrast {
+			--lightness: 75%
 		}
 
 		.bg {
@@ -131,7 +143,7 @@
 
 
 		.link.current {
-			background-color: red;
+			background: hsla(var(--hue) var(--saturation) var(--lightness) / var(--alpha));
 		}
 
 		.abbr {
@@ -140,10 +152,6 @@
 			padding-inline: .5rem;
 			border-radius: .375rem;
 			transition: background .15s;
-		}
-
-		.abbr:hover {
-			--lightness: 40%
 		}
 
 		.abbr::after {
@@ -162,39 +170,60 @@
 
 	<link rel="stylesheet" href="/styles/nav.css">
 	<link rel="stylesheet" href="/styles/article.css">
+	<script type="module" src="/scripts/nav.js"></script>
 </head>
 
 <body>
 	<nav id="nav" class="contrast bg">
 		<ul class="nav__list">
-			<li class="logo nav__item item"><a href="#">a</a></li>
+			<li class="logo nav__item item"></li>
 			<li class="nav__item item">
 				<ol id="sections__list" class="flex">
-					<li><a class="link" href="#c">b_a</a></li>
+					<li><a class="link" href="#ceop_section">CEOP</a></li>
 					<li><a class="link" href="#">b_b</a></li>
+					<li><a class="link" href="#">b_c</a></li>
+					<li><a class="link" href="#c">b_a</a></li>
 					<li><a class="link" href="#">b_c</a></li>
 				</ol>
 			</li>
-			<li><button class="icon">
-					<svg viewBox="0 0 24 24" focusable="false" role="presentation" class="css-ivr09j">
-						<g stroke-linejoin="full" stroke-linecap="full" stroke-width="2" fill="none" stroke="currentColor">
-							<circle cx="12" cy="12" r="5"></circle>
-							<path d="M12 1v2"></path>
-							<path d="M12 21v2"></path>
-							<path d="M4.22 4.22l1.42 1.42"></path>
-							<path d="M18.36 18.36l1.42 1.42"></path>
-							<path d="M1 12h2"></path>
-							<path d="M21 12h2"></path>
-							<path d="M4.22 19.78l1.42-1.42"></path>
-							<path d="M18.36 5.64l1.42-1.42"></path>
-						</g>
+			<li class="nav__buttons">
+				<button id="btn-theme" data-theme="dark">
+					<div class="icon moon">
+						<svg viewBox="0 0 24 24" focusable="false" role="presentation" aria-hidden="true" class="css-1im46kq">
+							<path fill="currentColor"
+								d="M21.4,13.7C20.6,13.9,19.8,14,19,14c-5,0-9-4-9-9c0-0.8,0.1-1.6,0.3-2.4c0.1-0.3,0-0.7-0.3-1 c-0.3-0.3-0.6-0.4-1-0.3C4.3,2.7,1,7.1,1,12c0,6.1,4.9,11,11,11c4.9,0,9.3-3.3,10.6-8.1c0.1-0.3,0-0.7-0.3-1 C22.1,13.7,21.7,13.6,21.4,13.7z">
+							</path>
+						</svg>
+					</div>
+					<div class="icon sun">
+						<svg viewBox="0 0 24 24" focusable="false" role="presentation" class="css-ivr09j">
+							<g stroke-linejoin="full" stroke-linecap="full" stroke-width="2" fill="none" stroke="currentColor">
+								<circle cx="12" cy="12" r="5"></circle>
+								<path d="M12 1v2"></path>
+								<path d="M12 21v2"></path>
+								<path d="M4.22 4.22l1.42 1.42"></path>
+								<path d="M18.36 18.36l1.42 1.42"></path>
+								<path d="M1 12h2"></path>
+								<path d="M21 12h2"></path>
+								<path d="M4.22 19.78l1.42-1.42"></path>
+								<path d="M18.36 5.64l1.42-1.42"></path>
+							</g>
+						</svg>
+					</div>
+				</button>
+				<button id="btn-menu">
+					<svg viewBox="0 0 24 24" focusable="false" class="chakra-icon css-onkibi" aria-hidden="true">
+						<path fill="currentColor"
+							d="M 3 5 A 1.0001 1.0001 0 1 0 3 7 L 21 7 A 1.0001 1.0001 0 1 0 21 5 L 3 5 z M 3 11 A 1.0001 1.0001 0 1 0 3 13 L 21 13 A 1.0001 1.0001 0 1 0 21 11 L 3 11 z M 3 17 A 1.0001 1.0001 0 1 0 3 19 L 21 19 A 1.0001 1.0001 0 1 0 21 17 L 3 17 z">
+						</path>
 					</svg>
-				</button></li>
+				</button>
+			</li>
 		</ul>
 	</nav>
 
 	<main>
-		<article>
+		<article id="ceop_section" class="bg contrast">
 			<header class="title">
 				<h1>
 					<a href="#" class="abbr bg">
@@ -210,82 +239,7 @@
 			</header>
 			<section class="article_section">
 				<div class="section_title">
-					<h2>¿Que és?</h2>
-				</div>
-				<div class="section_text">
-					<p>Texto</p>
-				</div>
-			</section>
-			<section class="article_section">
-				<div class="section_title">
-					<h2>¿Que és?</h2>
-				</div>
-				<div class="section_text">
-					<p>Texto</p>
-				</div>
-			</section>
-			<section class="article_section">
-				<div class="section_title">
-					<h2>¿Que és?</h2>
-				</div>
-				<div class="section_text">
-					<p>Texto</p>
-				</div>
-			</section>
-			<section class="article_section">
-				<div class="section_title">
-					<h2>¿Que és?</h2>
-				</div>
-				<div class="section_text">
-					<p>Texto</p>
-				</div>
-			</section>
-		</article>
-
-		<article>
-			<header class="title">
-				<h1>
-					<a href="#" class="abbr bg">
-						<strong>
-							<dfn>
-								<abbr title="[CEOP Complete abrebiature]">
-									CEOP
-								</abbr>
-							</dfn>
-						</strong>
-					</a>
-				</h1>
-			</header>
-			<section class="article_section">
-				<div class="section_title">
-					<h2>¿Que és?</h2>
-				</div>
-				<div class="section_text">
-					<p>Texto</p>
-				</div>
-			</section>
-			<section class="article_section">
-				<div class="section_title">
-					<h2>¿Que és?</h2>
-				</div>
-				<div class="section_text">
-					<p>Texto</p>
-				</div>
-			</section>
-			<section class="article_section">
-				<div class="section_title">
-					<h2>¿Que és?</h2>
-				</div>
-				<div class="section_text">
-					<p>Texto</p>
-				</div>
-			</section>
-			<section class="article_section">
-				<div class="section_title">
-					<h2>¿Que és?</h2>
-				</div>
-				<div class="section_text">
-					<p>Texto</p>
+					<h2>¿Qué es?</h2>
 				</div>
 			</section>
 		</article>
@@ -301,12 +255,12 @@
 	<script>
 		((w) => {
 			const themeConfig = JSON.parse(window.localStorage.getItem("config") || '{}')
-			if (!themeConfig.mode) {
-				const InitialThemeMode = "dark"
-				themeConfig.mode = InitialThemeMode
+			if (!themeConfig.theme) {
+				const InitialThemetheme = "dark"
+				themeConfig.theme = InitialThemetheme
 				window.localStorage.setItem("config", JSON.stringify(themeConfig))
 			}
-			document.body.classList.add(themeConfig.mode)
+			document.body.classList.add(themeConfig.theme)
 
 		})(typeof global !== "undefined" ? global : this)
 	</script>

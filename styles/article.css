@@ -2,19 +2,23 @@
 	margin-block: 2rem;
 }
 
-.section_title, .section_text {
+.section_title,
+.section_text {
 	position: relative;
 }
 
-.section_title > h2, .section_text > p {
-	margin-left: 1rem;
-} 
+.section_title>h2,
+.section_text>p {
+	margin-left: 2rem;
+}
 
-.section_title::before, .section_text::before {
+.section_title::before,
+.section_text::before {
+	--lightness: 60%;
 	position: absolute;
 	content: '';
-	left: 0;
-	background: hsla(255 25% 62% / .8);
+	left: 1rem;
+	background: hsla(var(--hue) var(--saturation) var(--lightness) / var(--alpha));
 }
 
 

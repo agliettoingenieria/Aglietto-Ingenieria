@@ -3,11 +3,13 @@
 	top: 0;
 	left: 0;
 	width: 100%;
-	padding-block: 1rem;
+	padding: 1rem;
 	z-index: 1;
 }
 
 .nav__list {
+	--lightness: 70%;
+	--lightness-hover: 60%;
 	display: grid;
 	grid-template-columns: .5fr 1fr .5fr;
 	align-items: center;
@@ -18,39 +20,102 @@
 	width: var(--logo-dimension);
 	height: var(--logo-dimension);
 	border-radius: 50%;
-	border: 1px solid red;
 	overflow: hidden;
 	background: url("https://secure.gravatar.com/avatar/8081b26e05bb4354f7d65ffc34cbbd67?s=80&d=retro&r=pg") no-repeat;
-	justify-self: center;
+	justify-self: start;
 }
 
 #sections__list {
 	justify-content: space-between;
 	align-items: center;
-	gap: 10vmin;
+	gap: 3vmin;
 }
 
 .link:not(.logo, .icon) {
 	position: relative;
 	top: -.2rem;
-	padding: .2rem 4vw;
+	padding: .5rem 2.5rem;
 	border-radius: .375rem;
 }
 
-.link:hover, .icon:hover {
-		--lightness: 70%;
-		background: hsla(var(--hue) var(--saturation) var(--lightness) / var(--alpha));
+.link:hover,
+#btn-theme:hover,
+#btn-menu:hover {
+	background: hsla(var(--hue) var(--saturation) var(--lightness) / var(--alpha));
 }
-.icon {
+
+.nav__buttons {
+	display: flex;
+	justify-content: flex-end;
+	gap: 2rem;
+}
+
+#btn-theme,
+#btn-menu {
+	position: relative;
 	z-index: 2;
-	padding: .5rem;
+	padding-inline: .5rem;
 	border-radius: .375rem;
+	overflow: hidden;
+	transition: opacity .3s .1s, top .3s;
+	width: 50px;
+	height: 50px;
+	--lightness: 60%;
+	background: hsla(var(--hue) var(--saturation) var(--lightness) / var(--alpha));
 }
 
-.light .icon {
-	color: #eefc2fde;
+.icon {
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	top: 10%;
+	left: 10%;
+	transition: translate .2s ease-in-out;
 }
 
-.dark .icon {
+.icon.moon {
 	color: #401575e3;
+}
+
+.icon.sun {
+	color: #d4e029e5
+}
+
+.light .moon {
+	display: none;
+}
+
+.dark .sun {
+	display: none;
+}
+
+#btn-menu {
+	display: none;
+}
+
+@media only screen and (max-width: 875px) {
+	.nav__list {
+		grid-template-columns: 1fr 1px 1.5fr;
+	}
+
+	#sections__list {
+		--lightness: 20%;
+		position: absolute;
+		display: flex;
+		width: 100%;
+		height: 100vh;
+		right: -120%;
+		top: 0;
+		justify-content: center;
+		flex-direction: column;
+		transition: right .2s;
+	}
+
+	#sections__list.show {
+		right: 0;
+	}
+
+	#btn-menu {
+		display: block;
+	}
 }

@@ -1,3 +1,5 @@
+export const $ = (element) => document.querySelector(element);
+export const $$ = (element) => document.querySelectorAll(element);
 export const areEquals = (source, compare) => source === compare;
 /**
  *

@@ -13,6 +13,11 @@ import { $ } from './utils.js';
         curr.classList.remove('current');
       }
       anchor.classList.add('current');
+      if (sectionsList.classList.contains('show')) {
+        sectionsList.classList.toggle('show');
+        sectionsList.classList.toggle('bg');
+        sectionsList.classList.toggle('contrast');
+      }
       curr = anchor;
     };
 

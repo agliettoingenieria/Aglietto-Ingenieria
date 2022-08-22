@@ -7,4 +7,5 @@ export const areEquals = (source, compare) => source === compare;
  * @param {IntersectionObserverInit} observerOptions
  * @returns { IntersectionObserver } Observer
  */
-export const Observer = (cb, observerOptions) => new IntersectionObserver();
+export const Observer = (cb, observerOptions) =>
+  new IntersectionObserver(cb, observerOptions);

@@ -99,7 +99,8 @@
 	}
 
 	#sections__list {
-		--lightness: 20%;
+		--lightness: 30%;
+		color: #FFFFFFFF;
 		position: absolute;
 		display: flex;
 		width: 100%;

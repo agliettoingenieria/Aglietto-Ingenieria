@@ -9,6 +9,6 @@ export default {
   nodeResolve: {
     exportConditions: 'development',
   },
-  appIndex: 'src/views/index.html',
+  appIndex: 'index.html',
   rootDir: '/',
 };

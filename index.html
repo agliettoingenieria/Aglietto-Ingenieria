@@ -1,270 +1,320 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
 
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+    <style>
+      :root {
+        --hue: 255;
+        --saturation: 25%;
+        --lightness: 12%;
+        --alpha: 1;
+        --fg-dark: #ffffff;
+        --fg-light: #000000;
+        --icon-dimension: 30px;
+        --logo-dimension: 80px;
+        --fs-title: 2.5rem;
+        --fs-subtitle: 2rem;
+        --fs-text: 1.5rem;
+        --pbl: 1rem;
+        --pln: 1rem;
+      }
+    </style>
 
-	<style>
-		:root {
-			--hue: 255;
-			--saturation: 25%;
-			--lightness: 12%;
-			--alpha: 1;
-			--fg-dark: #ffffff;
-			--fg-light: #000000;
-			--icon-dimension: 30px;
-			--logo-dimension: 80px;
-			--fs-title: 2.5rem;
-			--fs-subtitle: 1.5rem;
-			--fs-text: 1.3rem;
-			--pbl: 1rem;
-			--pln: 1rem;
-		}
-	</style>
+    <style>
+      html,
+      body,
+      *,
+      *::after,
+      *::before {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-size: var(--fs-text);
+        transition: background-color 0.1s;
+        color: var(--fg-dark);
+        overflow-x: hidden;
+        background: hsla(
+          var(--hue) var(--saturation) var(--lightness) / var(--alpha)
+        );
+      }
 
-	<style>
-		html,
-		body,
-		*,
-		*::after,
-		*::before {
-			padding: 0;
-			margin: 0;
-			box-sizing: border-box;
-		}
+      body.light {
+        --hue: 235;
+        --saturation: 73%;
+        --lightness: 87%;
+        color: var(--fg-light);
+      }
 
-		body {
-			font-size: var(--fs-text);
-			transition: background-color .1s;
-			color: var(--fg-dark);
-			overflow-x: hidden;
-			background: hsla(var(--hue) var(--saturation) var(--lightness) / var(--alpha));
-		}
+      main {
+        position: relative;
+        scroll-behavior: smooth;
+        padding-top: var(--pbl, 1rem);
+        padding-inline: var(--pln, 1rem);
+        scroll-snap-align: end;
+        scroll-snap-type: y;
+        margin-top: 112px;
+      }
 
-		body.light {
-			--hue: 235;
-			--saturation: 73%;
-			--lightness: 87%;
-			color: var(--fg-light);
-		}
+      article {
+        --lightness: 15%;
+        position: relative;
+        height: 100vh;
+        padding-top: 2rem;
+        /* padding-inline: var(--pln); */
+        border-radius: 0.375rem;
+        /* margin-bottom: var(--pbl); */
+      }
 
-		main {
-			position: relative;
-			scroll-behavior: smooth;
-			padding-top: var(--pbl, 1rem);
-			padding-inline: var(--pln, 1rem);
-			scroll-snap-align: end;
-			scroll-snap-type: y;
-			margin-top: 112px;
-		}
+      button {
+        background: none;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        width: fit-content;
+      }
 
-		article {
-			--lightness: 15%;
-			position: relative;
-			height: 100vh;
-			padding-top: 2rem;
-			padding-inline: var(--pln);
-			border-radius: .375rem;
-			margin-bottom: var(--pbl);
-		}
+      ul,
+      ol {
+        list-style: none;
+      }
 
-		button {
-			background: none;
-			border: none;
-			outline: none;
-			cursor: pointer;
-			width: fit-content;
-		}
+      li {
+        text-align: center;
+      }
 
-		ul,
-		ol {
-			list-style: none;
-		}
+      h1 {
+        font-size: var(--fs-title);
+      }
 
-		li {
-			text-align: center;
-		}
+      h3 {
+        font-size: var(--fs-subtitle);
+      }
 
-		h1 {
-			font-size: var(--fs-title);
-		}
+      a,
+      abbr,
+      a {
+        text-decoration: none;
+      }
 
-		h3 {
-			font-size: var(--fs-subtitle);
-		}
+      a,
+      a:visited {
+        display: inline-block;
+        color: inherit;
+      }
 
-		a,
-		abbr,
-		a {
+      a {
+        --lightness: 45%;
+      }
 
-			text-decoration: none;
-		}
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    </style>
+    <style>
+      .contrast {
+        --saturation: 45%;
+      }
 
-		a,
-		a:visited {
-			display: inline-block;
-			color: inherit;
-		}
+      .light nav.contrast {
+        --lightness: 70%;
+      }
 
-		a {
-			--lightness: 45%
-		}
+      .light .contrast {
+        --lightness: 75%;
+      }
 
-		img {
-			width: 100%;
-			height: 100%;
-			object-fit: contain;
-		}
-	</style>
-	<style>
-		.contrast {
-			--saturation: 45%;
-		}
+      .bg {
+        background: hsla(
+          var(--hue) var(--saturation) var(--lightness) / var(--alpha)
+        );
+      }
 
-		.light nav.contrast {
-			--lightness: 70%;
-		}
+      .flex {
+        display: flex;
+        justify-content: center;
+      }
 
-		.light .contrast {
-			--lightness: 75%
-		}
+      .link.current {
+        background: hsla(
+          var(--hue) var(--saturation) var(--lightness) / var(--alpha)
+        );
+      }
 
-		.bg {
-			background: hsla(var(--hue) var(--saturation) var(--lightness) / var(--alpha));
-		}
+      .abbr {
+        --lightness: 60%;
+        position: relative;
+        padding-inline: 0.5rem;
+        border-radius: 0.375rem;
+        transition: background 0.15s;
+        cursor: help;
+      }
 
-		.flex {
-			display: flex;
-			justify-content: center;
-		}
+      .abbr::after {
+        position: absolute;
+        content: '?';
+        font-size: 1.3rem;
+        top: -3%;
+        right: -10%;
+      }
 
+      .icon {
+        width: 60px;
+        height: 60px;
+      }
+    </style>
 
-		.link.current {
-			background: hsla(var(--hue) var(--saturation) var(--lightness) / var(--alpha));
-		}
+    <link rel="stylesheet" href="/styles/nav.css" />
+    <link rel="stylesheet" href="/styles/article.css" />
+    <script type="module" src="/scripts/nav.js"></script>
+  </head>
 
-		.abbr {
-			--lightness: 60%;
-			position: relative;
-			padding-inline: .5rem;
-			border-radius: .375rem;
-			transition: background .15s;
-		}
+  <body>
+    <nav id="nav" class="contrast bg">
+      <ul class="nav__list">
+        <li class="logo nav__item item"></li>
+        <li class="nav__item item">
+          <ol id="sections__list" class="flex">
+            <li><a class="link" href="#ceop_section">CEOP</a></li>
+            <li><a class="link" href="#">b_b</a></li>
+            <li><a class="link" href="#">b_c</a></li>
+            <li><a class="link" href="#c">b_a</a></li>
+            <li><a class="link" href="#">b_c</a></li>
+          </ol>
+        </li>
+        <li class="nav__buttons">
+          <button id="btn-theme" data-theme="dark">
+            <div class="icon moon">
+              <svg
+                viewBox="0 0 24 24"
+                focusable="false"
+                role="presentation"
+                aria-hidden="true"
+                class="css-1im46kq"
+              >
+                <path
+                  fill="currentColor"
+                  d="M21.4,13.7C20.6,13.9,19.8,14,19,14c-5,0-9-4-9-9c0-0.8,0.1-1.6,0.3-2.4c0.1-0.3,0-0.7-0.3-1 c-0.3-0.3-0.6-0.4-1-0.3C4.3,2.7,1,7.1,1,12c0,6.1,4.9,11,11,11c4.9,0,9.3-3.3,10.6-8.1c0.1-0.3,0-0.7-0.3-1 C22.1,13.7,21.7,13.6,21.4,13.7z"
+                ></path>
+              </svg>
+            </div>
+            <div class="icon sun">
+              <svg
+                viewBox="0 0 24 24"
+                focusable="false"
+                role="presentation"
+                class="css-ivr09j"
+              >
+                <g
+                  stroke-linejoin="full"
+                  stroke-linecap="full"
+                  stroke-width="2"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <circle cx="12" cy="12" r="5"></circle>
+                  <path d="M12 1v2"></path>
+                  <path d="M12 21v2"></path>
+                  <path d="M4.22 4.22l1.42 1.42"></path>
+                  <path d="M18.36 18.36l1.42 1.42"></path>
+                  <path d="M1 12h2"></path>
+                  <path d="M21 12h2"></path>
+                  <path d="M4.22 19.78l1.42-1.42"></path>
+                  <path d="M18.36 5.64l1.42-1.42"></path>
+                </g>
+              </svg>
+            </div>
+          </button>
+          <button id="btn-menu">
+            <svg
+              viewBox="0 0 24 24"
+              focusable="false"
+              class="chakra-icon css-onkibi"
+              aria-hidden="true"
+            >
+              <path
+                fill="currentColor"
+                d="M 3 5 A 1.0001 1.0001 0 1 0 3 7 L 21 7 A 1.0001 1.0001 0 1 0 21 5 L 3 5 z M 3 11 A 1.0001 1.0001 0 1 0 3 13 L 21 13 A 1.0001 1.0001 0 1 0 21 11 L 3 11 z M 3 17 A 1.0001 1.0001 0 1 0 3 19 L 21 19 A 1.0001 1.0001 0 1 0 21 17 L 3 17 z"
+              ></path>
+            </svg>
+          </button>
+        </li>
+      </ul>
+    </nav>
 
-		.abbr::after {
-			position: absolute;
-			content: "?";
-			font-size: 1.3rem;
-			top: -3%;
-			right: -10%;
-		}
+    <main>
+      <article id="ceop_section" class="article">
+        <span class="image">
+          <img src="/assets/images/img-1.png" alt="Image" />
+        </span>
+        <header class="title">
+          <h1>
+            <strong class="abbr bg">
+              <dfn>
+                <abbr title="Calidad de Eenergía Orientada a Procesos.">
+                  CEOP
+                </abbr>
+              </dfn>
+            </strong>
+          </h1>
+        </header>
+        <div class="sections bg contrast">
+          <section class="article_section">
+            <div class="section_title">
+              <h2>¿Qué es?</h2>
+            </div>
+            <div class="section_text">
+              <p>
+                Calidad de Energia Orietnada a proceso es un sistema unico
+                desarrollado por nosotros, donde medimos los paramestors de de
+                CE e norma internacional y el resto de persturbacioens que noe
+                stna en la norma pero que afectan lso equipos elecotrnciso., por
+                eso debpende de que maquian y que aplicación es qel enfoque que
+                vamos a usar.
+              </p>
+            </div>
+          </section>
+          <section class="article_section">
+            <div class="section_title">
+              <h2>Pasos: ¿Cómo lo medimos?</h2>
+            </div>
+            <div class="section_text">
+              <p>
+                Medimos en la maquina, nos juntamos en uan reunión y armamos un
+                plan en etapa de mejora continua .
+              </p>
+            </div>
+          </section>
+        </div>
+      </article>
+    </main>
 
-		.icon {
-			width: 60px;
-			height: 60px;
-		}
-	</style>
-
-	<link rel="stylesheet" href="/styles/nav.css">
-	<link rel="stylesheet" href="/styles/article.css">
-	<script type="module" src="/scripts/nav.js"></script>
-</head>
-
-<body>
-	<nav id="nav" class="contrast bg">
-		<ul class="nav__list">
-			<li class="logo nav__item item"></li>
-			<li class="nav__item item">
-				<ol id="sections__list" class="flex">
-					<li><a class="link" href="#ceop_section">CEOP</a></li>
-					<li><a class="link" href="#">b_b</a></li>
-					<li><a class="link" href="#">b_c</a></li>
-					<li><a class="link" href="#c">b_a</a></li>
-					<li><a class="link" href="#">b_c</a></li>
-				</ol>
-			</li>
-			<li class="nav__buttons">
-				<button id="btn-theme" data-theme="dark">
-					<div class="icon moon">
-						<svg viewBox="0 0 24 24" focusable="false" role="presentation" aria-hidden="true" class="css-1im46kq">
-							<path fill="currentColor"
-								d="M21.4,13.7C20.6,13.9,19.8,14,19,14c-5,0-9-4-9-9c0-0.8,0.1-1.6,0.3-2.4c0.1-0.3,0-0.7-0.3-1 c-0.3-0.3-0.6-0.4-1-0.3C4.3,2.7,1,7.1,1,12c0,6.1,4.9,11,11,11c4.9,0,9.3-3.3,10.6-8.1c0.1-0.3,0-0.7-0.3-1 C22.1,13.7,21.7,13.6,21.4,13.7z">
-							</path>
-						</svg>
-					</div>
-					<div class="icon sun">
-						<svg viewBox="0 0 24 24" focusable="false" role="presentation" class="css-ivr09j">
-							<g stroke-linejoin="full" stroke-linecap="full" stroke-width="2" fill="none" stroke="currentColor">
-								<circle cx="12" cy="12" r="5"></circle>
-								<path d="M12 1v2"></path>
-								<path d="M12 21v2"></path>
-								<path d="M4.22 4.22l1.42 1.42"></path>
-								<path d="M18.36 18.36l1.42 1.42"></path>
-								<path d="M1 12h2"></path>
-								<path d="M21 12h2"></path>
-								<path d="M4.22 19.78l1.42-1.42"></path>
-								<path d="M18.36 5.64l1.42-1.42"></path>
-							</g>
-						</svg>
-					</div>
-				</button>
-				<button id="btn-menu">
-					<svg viewBox="0 0 24 24" focusable="false" class="chakra-icon css-onkibi" aria-hidden="true">
-						<path fill="currentColor"
-							d="M 3 5 A 1.0001 1.0001 0 1 0 3 7 L 21 7 A 1.0001 1.0001 0 1 0 21 5 L 3 5 z M 3 11 A 1.0001 1.0001 0 1 0 3 13 L 21 13 A 1.0001 1.0001 0 1 0 21 11 L 3 11 z M 3 17 A 1.0001 1.0001 0 1 0 3 19 L 21 19 A 1.0001 1.0001 0 1 0 21 17 L 3 17 z">
-						</path>
-					</svg>
-				</button>
-			</li>
-		</ul>
-	</nav>
-
-	<main>
-		<article id="ceop_section" class="bg contrast">
-			<header class="title">
-				<h1>
-					<a href="#" class="abbr bg">
-						<strong>
-							<dfn>
-								<abbr title="[CEOP Complete abrebiature]">
-									CEOP
-								</abbr>
-							</dfn>
-						</strong>
-					</a>
-				</h1>
-			</header>
-			<section class="article_section">
-				<div class="section_title">
-					<h2>¿Qué es?</h2>
-				</div>
-			</section>
-		</article>
-	</main>
-
-	<span id="socials">
-		<ul class="list">
-			<li></li>
-			<li></li>
-			<li></li>
-		</ul>
-	</span>
-	<script>
-		((w) => {
-			const themeConfig = JSON.parse(window.localStorage.getItem("config") || '{}')
-			if (!themeConfig.theme) {
-				const InitialThemetheme = "dark"
-				themeConfig.theme = InitialThemetheme
-				window.localStorage.setItem("config", JSON.stringify(themeConfig))
-			}
-			document.body.classList.add(themeConfig.theme)
-
-		})(typeof global !== "undefined" ? global : this)
-	</script>
-
-</body>
-
+    <span id="socials">
+      <ul class="list">
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </span>
+    <script>
+      ((w) => {
+        const themeConfig = JSON.parse(
+          window.localStorage.getItem('config') || '{}'
+        );
+        if (!themeConfig.theme) {
+          const InitialThemetheme = 'dark';
+          themeConfig.theme = InitialThemetheme;
+          window.localStorage.setItem('config', JSON.stringify(themeConfig));
+        }
+        document.body.classList.add(themeConfig.theme);
+      })(typeof global !== 'undefined' ? global : this);
+    </script>
+  </body>
 </html>

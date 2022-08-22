@@ -4,7 +4,8 @@
   "description": "Sitio Web para Aglietto Ingenieria",
   "main": "index.js",
   "scripts": {
-    "start": "web-dev-server --node-resolve --open --watch"
+    "start": "web-dev-server --node-resolve --open --watch", 
+    "lint": "npx eslint . --ext .html,.js"
   },
   "repository": {
     "type": "git",
